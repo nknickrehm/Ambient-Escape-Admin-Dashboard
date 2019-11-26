@@ -1,7 +1,5 @@
 # Ambient-Escape-Admin-Dashboard
 
->  
-
 ## Build Setup
 
 ``` bash
