@@ -36,6 +36,7 @@ export default {
 <style scoped>
 ul{
   list-style: none;
+  padding: 0.25rem;
 }
 .log__header.tile__header{
   height: 30px;
@@ -50,5 +51,6 @@ ul{
     border: 1px solid #686868;
     width: 90%;
     margin: auto;
+    margin-bottom: 1rem;
 }
 </style>
