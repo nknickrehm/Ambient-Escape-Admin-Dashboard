@@ -7,7 +7,8 @@
     <div id="top-bar">
       <GlobalProgress id="progress" />
     </div>
-    <tile-group />
+    <!-- <tile-group /> -->
+    <RoomOverview />
   </div>
 </template>
 
@@ -15,11 +16,14 @@
 import GameState from '../../helpers/gamestate'
 import TileGroup from './TileGroup.vue'
 import GlobalProgress from './GlobalProgress.vue'
+import RoomOverview from './RoomOverview.vue'
+
 export default {
   name: 'SpielZustand',
   components: {
     TileGroup,
-    GlobalProgress
+    GlobalProgress,
+    RoomOverview
   },
   methods: {
     stopGame () {
