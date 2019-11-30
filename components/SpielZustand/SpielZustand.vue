@@ -4,6 +4,9 @@
     <button @click="stopGame" class="button is-danger">
       Spiel beenden
     </button> -->
+    <div id="top-bar">
+      <GlobalProgress id="progress" />
+    </div>
     <tile-group />
   </div>
 </template>
@@ -11,10 +14,12 @@
 <script>
 import GameState from '../../helpers/gamestate'
 import TileGroup from './TileGroup.vue'
+import GlobalProgress from './GlobalProgress.vue'
 export default {
   name: 'SpielZustand',
   components: {
-    TileGroup
+    TileGroup,
+    GlobalProgress
   },
   methods: {
     stopGame () {
@@ -25,6 +30,15 @@ export default {
 </script>
 
 <style>
+#top-bar{
+  width:100%;
+  margin-bottom:10px;
+}
+
+#progress{
+  margin:0 auto;
+}
+
 .tile__header{
   background: #686868;
   color: white;
