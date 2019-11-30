@@ -30,8 +30,8 @@ export default {
   color: white;
   font-weight:700;
   text-align: center;
-  height: 50px;
-  font-size: 2rem;
+  height: 40px;
+  font-size: 1.5rem;
 }
 .tile.is-child{
   box-shadow: 0 0 10px rgba(0,0,0,.2);
