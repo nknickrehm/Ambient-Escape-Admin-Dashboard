@@ -1,7 +1,7 @@
 <template>
   <div class="globalWrapper">
       <div class="timer">
-          <p>{{globalTime}}</p>
+          <p>{{hours}} : {{minutes}} : {{seconds}}</p>
       </div>
       <Progressbar :progress="progress" class="globalProgressBar" />
   </div>
@@ -15,13 +15,47 @@ export default {
   components: {
     Progressbar
   },
+  mounted () {
+    console.log('TEST1')
+    window.setInterval(() => {
+      console.log('TEST')
+      this.now = Math.trunc((new Date()).getTime() / 1000)
+    }, 1000)
+  },
   data () {
     return {
       progress: 70,
-      globalTime: '99:99:99'
+      now: Math.trunc((new Date()).getTime() / 1000),
+      date: Math.trunc(((new Date()).getTime() + 45 * 60000) / 1000)
     }
   },
-  methods: {}
+  methods: {
+  },
+  computed: {
+    seconds () {
+      const value = (this.date - this.now) % 60
+      if (value.toString().length <= 1) {
+        return '0' + value.toString()
+      }
+      return value.toString()
+    },
+
+    minutes () {
+      const value = Math.trunc((this.date - this.now) / 60) % 60
+      if (value.toString().length <= 1) {
+        return '0' + value.toString()
+      }
+      return value.toString()
+    },
+
+    hours () {
+      const value = Math.trunc((this.date - this.now) / 60 / 60) % 24
+      if (value.toString().length <= 1) {
+        return '0' + value.toString()
+      }
+      return value.toString()
+    }
+  }
 }
 </script>
 
