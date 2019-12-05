@@ -46,6 +46,7 @@
 import Progressbar from './Progressbar.vue'
 import Log from './Log.vue'
 import KeyList from './KeyList.vue'
+import IO from '~/node_modules/socket.io-client/dist/socket.io'
 
 export default {
   name: 'TileGroup',
@@ -60,33 +61,99 @@ export default {
         a: {
           progress: 70,
           log: [
-            { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            }
           ],
           keysFound: [true]
         },
         d: {
           progress: 10,
           log: [
-            { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            }
           ],
           keysFound: [true, false, false]
         },
         e: {
           progress: 30,
           log: [
-            { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            }
           ],
           keysFound: [true, false, false, true]
         },
         f: {
           progress: 50,
           log: [
-            { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id', date: new Date() }
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            },
+            {
+              text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+              date: new Date()
+            }
           ],
-          keysFound: [ false, false, false, false, false ]
+          keysFound: [false, false, false, false, false]
         }
-      }
+      },
+      socket: null
     }
+  },
+  mounted () {
+    this.socket = IO('http://192.168.178.30:8080/')
+    this.socket.on('newLogEntry', payload => console.log(payload))
   }
   //  TODO
   // methods:{
@@ -94,13 +161,12 @@ export default {
   //   }
   // }
 }
-
 </script>
 <style scoped>
-.tile.is-child.is-6{
+.tile.is-child.is-6 {
   width: 48%;
 }
-.tile.is-parent{
+.tile.is-parent {
   justify-content: space-evenly;
 }
 </style>
