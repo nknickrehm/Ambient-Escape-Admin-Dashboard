@@ -57,103 +57,23 @@ export default {
   },
   data () {
     return {
-      groupData: {
-        a: {
-          progress: 70,
-          log: [
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            }
-          ],
-          keysFound: [true]
-        },
-        d: {
-          progress: 10,
-          log: [
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            }
-          ],
-          keysFound: [true, false, false]
-        },
-        e: {
-          progress: 30,
-          log: [
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            }
-          ],
-          keysFound: [true, false, false, true]
-        },
-        f: {
-          progress: 50,
-          log: [
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            },
-            {
-              text:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-              date: new Date()
-            }
-          ],
-          keysFound: [false, false, false, false, false]
-        }
-      },
       socket: null
+    }
+  },
+  computed: {
+    groupData () {
+      return this.$store.state.logs.groupLogs
     }
   },
   mounted () {
     this.socket = IO('http://192.168.178.30:8080/')
-    this.socket.on('newLogEntry', payload => console.log(payload))
+    this.socket.on('newLogEntry', ({ groupID, data: text, timestamp }) => {
+      this.$store.commit('logs/addToLog', {
+        groupID: groupID.toLowerCase(),
+        logEntry: { text, timestamp: new Date(timestamp) }
+      })
+    })
+    this.scoket.on('riddles', data => console.log(data))
   }
   //  TODO
   // methods:{
