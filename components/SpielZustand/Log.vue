@@ -44,13 +44,19 @@ ul{
   margin-bottom: 1rem;
 }
 .log-list{
-   overflow-y: scroll;
+   overflow-y: auto;
   overflow-x: hidden;
+  height: 8rem;
 }
 .log{
     border: 1px solid #686868;
     width: 90%;
     margin: auto;
     margin-bottom: 1rem;
+}
+div.column.is-four-fifths,
+div.column.is-one-fifth{
+  padding-top: .25rem;
+  padding-bottom: .25rem;
 }
 </style>

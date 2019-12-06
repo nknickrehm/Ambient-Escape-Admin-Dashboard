@@ -1,8 +1,6 @@
 <template>
   <div class="progress-container">
-    <progress :value="progress" class="progress is-large is-success" max="100">
-      {{ progress }}%
-    </progress>
+    <progress :value="progress" class="progress is-large is-success" max="100" />
     <p class="progress-value">
       {{ progress }} %
     </p>
@@ -36,9 +34,18 @@ export default {
   position: absolute;
   font-weight: 700;
   font-size: 20px;
-  color: white;
+  color: #333;
    left: 50%;
   top: 50%;
   margin-top: -15px;
+  margin-left: -15px;
 }
+
+progress.progress.is-large.is-success::-webkit-progress-value{
+  background: #47da79;
+}
+ progress.progress.is-large.is-success::-moz-progress-bar{
+  background: #47da79;
+ }
+
 </style>
