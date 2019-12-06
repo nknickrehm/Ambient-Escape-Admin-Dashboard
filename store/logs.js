@@ -119,17 +119,17 @@ export const mutations = {
     state.groupLogs[groupID.toLowerCase()].progress = value
   },
   updateProgress (state, { name, progress }) {
-    state.groupLogs[name.toLowerCase()].progress = progress
+    state.groupLogs[name.toLowerCase()].progress = parseInt(progress)
   }
 }
 
 export const getters = {
   getGlobalProgress (state) {
     return (
-      (parseInt(state.groupLogs.a.progress) +
-        parseInt(state.groupLogs.d.progress) +
-        parseInt(state.groupLogs.e.progress) +
-        parseInt(state.groupLogs.f.progress)) /
+      (state.groupLogs.a.progress +
+        state.groupLogs.d.progress +
+        state.groupLogs.e.progress +
+        state.groupLogs.f.progress) /
       4
     )
   }
