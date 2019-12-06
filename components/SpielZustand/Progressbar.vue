@@ -43,9 +43,11 @@ export default {
 
 progress.progress.is-large.is-success::-webkit-progress-value{
   background: #47da79;
+  transition: width .5s;
 }
  progress.progress.is-large.is-success::-moz-progress-bar{
   background: #47da79;
+  transition: width .5s;
  }
 
 </style>

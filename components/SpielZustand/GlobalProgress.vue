@@ -3,7 +3,7 @@
     <div class="timer">
       <p>{{ hours }} : {{ minutes }} : {{ seconds }}</p>
     </div>
-    <Progressbar :progress="progress" class="globalProgressBar" />
+    <Progressbar :progress="globalProgress" class="globalProgressBar" />
   </div>
 </template>
 
@@ -45,6 +45,10 @@ export default {
         return '0' + value.toString()
       }
       return value.toString()
+    },
+
+    globalProgress () {
+      return this.$store.getters['logs/getGlobalProgress']
     }
   },
   mounted () {

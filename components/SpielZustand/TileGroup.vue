@@ -73,7 +73,9 @@ export default {
         logEntry: { text, timestamp: new Date(timestamp) }
       })
     })
-    this.scoket.on('riddles', data => console.log(data))
+    this.socket.on('updateRiddleProgress', (data) => {
+      this.$store.commit('logs/updateProgress', data)
+    })
   }
   //  TODO
   // methods:{

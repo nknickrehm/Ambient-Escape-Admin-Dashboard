@@ -104,18 +104,33 @@ export const mutations = {
     })
   },
   addToLog (state, { groupID, logEntry }) {
-    state.groupLogs[groupID].log.push(logEntry)
+    state.groupLogs[groupID.toLowerCase()].log.push(logEntry)
     // compensate vue2 bug
-    state.groupLogs[groupID].log.push(null)
-    state.groupLogs[groupID].log.pop()
+    state.groupLogs[groupID.toLowerCase()].log.push(null)
+    state.groupLogs[groupID.toLowerCase()].log.pop()
   },
   changeKeysFound (state, { groupID, index, value = true }) {
-    state.groupLogs[groupID].keysFound[index] = value
+    state.groupLogs[groupID.toLowerCase()].keysFound[index] = value
     // compensate vue2 bug
-    state.groupLogs[groupID].keysFound.push(null)
-    state.groupLogs[groupID].keysFound.pop()
+    state.groupLogs[groupID.toLowerCase()].keysFound.push(null)
+    state.groupLogs[groupID.toLowerCase()].keysFound.pop()
   },
   changeProgress (state, { groupID, value }) {
-    state.groupLogs[groupID].progress = value
+    state.groupLogs[groupID.toLowerCase()].progress = value
+  },
+  updateProgress (state, { name, progress }) {
+    state.groupLogs[name.toLowerCase()].progress = progress
+  }
+}
+
+export const getters = {
+  getGlobalProgress (state) {
+    return (
+      (parseInt(state.groupLogs.a.progress) +
+        parseInt(state.groupLogs.d.progress) +
+        parseInt(state.groupLogs.e.progress) +
+        parseInt(state.groupLogs.f.progress)) /
+      4
+    )
   }
 }
