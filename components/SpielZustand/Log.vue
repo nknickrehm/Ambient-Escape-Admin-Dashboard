@@ -24,12 +24,6 @@ export default {
     logs: {
       required: true,
       type: Array,
-      validator: (v) => {
-        let isValid = true
-        for (let i = 0; i < v.length; i += 1) {
-          isValid = isValid && typeof v[i].text === 'string' && typeof v[i].timestamp === 'object'
-        }
-      },
       default: () => []
     }
   }
