@@ -56,7 +56,13 @@ export default {
       })
     },
     startGame () {
-      this.$emit('changeGameState', GameState.running)
+      // TODO set link active
+      // this.tabs[0].isActive = false
+      // this.tabs[1].isActive = true
+      // // vue bughandling
+      // this.tabs.push(0)
+      // this.tabs.pop()
+      this.changeGameState(GameState.running)
     }
   }
 }

@@ -5,6 +5,9 @@
 </template>
 <script>
 export default {
+  // TODO for each Group calc key = %
+  // Group D: 4 keys, 25% each key
+  // Group A: 1 key, 100% each key
   name: 'KeyList',
   props: {
     keys: {
