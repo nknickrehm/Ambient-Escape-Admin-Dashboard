@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <tab-bar :tabs="tabs" @change="changeTab" />
     <spiel-admin v-if="gameState === GameState.setup" @changeGameState="changeGameState" />
     <spiel-zustand v-if="gameState === GameState.running" @changeGameState="changeGameState" />
   </div>
@@ -9,12 +10,33 @@
 import SpielAdmin from '../components/SpielAdmin/SpielAdmin'
 import SpielZustand from '../components/SpielZustand/SpielZustand'
 import GameState from '../helpers/gamestate'
+import TabBar from '../components/TabBar'
 
 export default {
-  components: { SpielZustand, SpielAdmin },
+  components: { SpielZustand, SpielAdmin, TabBar },
   data () {
     return {
-      gameState: 0
+      gameState: 0,
+      tabs: [
+        {
+          isActive: true,
+          label: 'Start',
+          icon: 'home',
+          component: 'tab-index'
+        },
+        {
+          isActive: false,
+          label: 'Aufbau des Raumes',
+          icon: 'list',
+          component: 'tab-setup-list'
+        },
+        {
+          isActive: false,
+          label: 'Spielerinformationen',
+          icon: 'users',
+          component: 'tab-player-info'
+        }
+      ]
     }
   },
   computed: {
@@ -27,6 +49,14 @@ export default {
     changeGameState (newState) {
       this.$store.commit('gamestate/change', newState)
       this.gameState = newState
+    },
+    changeTab (tabIndex) {
+      this.tabs.map((tab) => {
+        tab.isActive = this.tabs.indexOf(tab) === tabIndex
+      })
+    },
+    startGame () {
+      this.$emit('changeGameState', GameState.running)
     }
   }
 }

@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <tab-bar :tabs="tabs" @change="changeTab" />
     <!-- eslint-disable-next-line vue/require-component-is -->
     <component :is="tab.component" v-for="(tab, index) in tabs" :key="index" v-if="tab.isActive" />
     <button @click="startGame" class="button is-primary">
