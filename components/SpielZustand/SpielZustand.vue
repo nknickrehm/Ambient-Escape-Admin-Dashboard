@@ -16,6 +16,7 @@
 import GameState from '../../helpers/gamestate'
 import TileGroup from './TileGroup.vue'
 import GlobalProgress from './GlobalProgress.vue'
+
 export default {
   name: 'SpielZustand',
   components: {

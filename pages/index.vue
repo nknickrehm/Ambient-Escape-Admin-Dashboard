@@ -9,11 +9,12 @@
 <script>
 import SpielAdmin from '../components/SpielAdmin/SpielAdmin'
 import SpielZustand from '../components/SpielZustand/SpielZustand'
+import RoomOverview from '../components/SpielZustand/RoomOverview'
 import GameState from '../helpers/gamestate'
 import TabBar from '../components/TabBar'
 
 export default {
-  components: { SpielZustand, SpielAdmin, TabBar },
+  components: { SpielZustand, SpielAdmin, TabBar, RoomOverview },
   data () {
     return {
       gameState: 0,
