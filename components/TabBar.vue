@@ -7,6 +7,7 @@
             <i :class="`fas fa-${tab.icon}`" aria-hidden="true" />
           </span>
           <span>{{ tab.label }}</span>
+          <tab-indicator v-if="tab.progress" :store-getter="tab.progress" />
         </a>
       </li>
     </ul>
@@ -14,13 +15,12 @@
 </template>
 
 <script>
+import TabIndicator from './TabIndicator'
 export default {
   name: 'TabBar',
+  components: { TabIndicator },
   props: {
-    tabs: {
-      type: Array,
-      default () { return [] }
-    }
+    tabs: Array
   },
   computed: {
     isGameStarted () {

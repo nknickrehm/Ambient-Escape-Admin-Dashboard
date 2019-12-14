@@ -34,12 +34,15 @@
         <span class="tag is-danger is-light">Bitte vervollständige die Angaben und Todos in allen Teilschritten!</span>
         <br><br>
       </p>
-      <p v-if="valid">
+      <p v-if="valid && gameState !== 1">
         <span class="tag is-success is-light">Das Spiel ist startklar!</span>
         <br><br>
       </p>
-
-      <button :disabled="!valid" @click="startGame" class="button is-success">
+      <p v-if="gameState === 1">
+        <span class="tag is-success is-light">Das Spiel läuft bereits!</span>
+        <br><br>
+      </p>
+      <button :disabled="!valid || gameState === 1" @click="startGame" class="button is-success">
         Spiel starten
       </button>
     </section>
@@ -51,14 +54,20 @@ export default {
   name: 'TabFinalPreparation',
   data () {
     return {
-      players: [],
-      valid: false
+      players: []
     }
   },
   created () {
     const storedPlayers = this.$store.getters['players/getPlayers']
     this.players = JSON.parse(JSON.stringify(storedPlayers))
-    this.validate()
+  },
+  computed: {
+    valid () {
+      return this.$store.getters['players/getValid']
+    },
+    gameState () {
+      return this.$store.getters['gamestate/getState']
+    }
   },
   methods: {
     startGame () {
@@ -71,17 +80,6 @@ export default {
         case 2: return 'Kopfhörer'
         default: return 'Kein Gerät ausgewählt'
       }
-    },
-    validate () {
-      let valid = true
-      this.players.forEach((player) => {
-        if (player.name.length < 1 || player.email.length < 1 || !player.accepted) { valid = false }
-      })
-
-      const sumDevices = this.players.reduce((acc, player) => acc + player.device, 0)
-      if (sumDevices !== 2) { valid = false } // if all devices are distributed, the players device attributes sum up to 2
-
-      this.valid = valid
     }
   }
 }

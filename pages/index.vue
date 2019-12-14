@@ -46,13 +46,15 @@ export default {
           isActive: false,
           label: 'Vorbereitung des Raumes',
           icon: 'hospital-alt',
-          component: 'tab-room-preparation'
+          component: 'tab-room-preparation',
+          progress: 'players/getValid'
         },
         {
           isActive: false,
           label: 'Vorbereitung der Spieler',
           icon: 'users',
-          component: 'tab-player-preparation'
+          component: 'tab-player-preparation',
+          progress: 'players/getValid'
         },
         {
           isActive: false,

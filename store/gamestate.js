@@ -9,3 +9,9 @@ export const mutations = {
     state.currentState = newGameState
   }
 }
+
+export const getters = {
+  getState (state) {
+    return state.currentState
+  }
+}

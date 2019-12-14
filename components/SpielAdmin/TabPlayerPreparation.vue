@@ -146,8 +146,7 @@ export default {
   data () {
     return {
       players: [],
-      devices: [-1, -1, -1],
-      valid: false
+      devices: [-1, -1, -1]
     }
   },
   created () {
@@ -156,7 +155,11 @@ export default {
     this.players.forEach((player, index) => {
       if (player.device >= 0) { this.devices[player.device] = index }
     })
-    this.validate()
+  },
+  computed: {
+    valid () {
+      return this.$store.getters['players/getValid']
+    }
   },
   methods: {
     updateDevice (index) {
@@ -184,18 +187,6 @@ export default {
     savePlayers () {
       const newPlayers = JSON.parse(JSON.stringify(this.players))
       this.$store.commit('players/update', newPlayers)
-      this.validate()
-    },
-    validate () {
-      let valid = true
-      this.players.forEach((player) => {
-        if (player.name.length < 1 || player.email.length < 1 || !player.accepted) { valid = false }
-      })
-
-      const sumDevices = this.players.reduce((acc, player) => acc + player.device, 0)
-      if (sumDevices !== 2) { valid = false } // if all devices are distributed, the players device attributes sum up to 2
-
-      this.valid = valid
     },
     playerName (i) {
       return this.players[i].name.length > 0 ? this.players[i].name : `Spieler ${i + 1}`
