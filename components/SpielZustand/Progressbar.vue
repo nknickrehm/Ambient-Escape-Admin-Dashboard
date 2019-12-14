@@ -27,7 +27,7 @@ export default {
   height: 30px;
 }
 .progress-container{
-  margin: 3rem 1rem;
+  margin: 1.5rem 1rem;
   position: relative
 }
 .progress-value{
