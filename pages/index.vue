@@ -26,6 +26,12 @@ export default {
         },
         {
           isActive: false,
+          label: 'Spielzustand',
+          icon: 'list',
+          component: 'tab-game-state'
+        },
+        {
+          isActive: false,
           label: 'Aufbau des Raumes',
           icon: 'list',
           component: 'tab-setup-list'
