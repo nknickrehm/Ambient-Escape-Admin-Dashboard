@@ -18,30 +18,7 @@ import TabSetupList from './TabSetupList'
 export default {
   name: 'SpielAdmin',
   components: { TabIndex, TabBar, TabPlayerInfo, TabSetupList },
-  data () {
-    return {
-      tabs: [
-        {
-          isActive: true,
-          label: 'Start',
-          icon: 'home',
-          component: 'tab-index'
-        },
-        {
-          isActive: false,
-          label: 'Aufbau des Raumes',
-          icon: 'list',
-          component: 'tab-setup-list'
-        },
-        {
-          isActive: false,
-          label: 'Spielerinformationen',
-          icon: 'users',
-          component: 'tab-player-info'
-        }
-      ]
-    }
-  },
+  props: ['tabs'],
   methods: {
     changeTab (tabIndex) {
       this.tabs.map((tab) => {

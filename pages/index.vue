@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <tab-bar :tabs="tabs" @change="changeTab" />
-    <spiel-admin v-if="gameState === GameState.setup" @changeGameState="changeGameState" />
+    <spiel-admin :tabs="tabs" v-if="gameState === GameState.setup" @changeGameState="changeGameState" />
     <spiel-zustand v-if="gameState === GameState.running" @changeGameState="changeGameState" />
   </div>
 </template>
