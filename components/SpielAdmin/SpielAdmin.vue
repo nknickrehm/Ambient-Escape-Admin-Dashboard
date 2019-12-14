@@ -12,13 +12,19 @@
 import TabBar from '../TabBar'
 import GameState from '../../helpers/gamestate'
 import TabIndex from './TabIndex'
-import TabPlayerInfo from './TabPlayerInfo'
-import TabSetupList from './TabSetupList'
+import TabPlayerPreparation from './TabPlayerPreparation'
+import TabRoomPreparation from './TabRoomPreparation'
+import TabFinalPreparation from './TabFinalPreparation'
 
 export default {
   name: 'SpielAdmin',
-  components: { TabIndex, TabBar, TabPlayerInfo, TabSetupList },
-  props: ['tabs'],
+  components: { TabBar, TabIndex, TabRoomPreparation, TabPlayerPreparation, TabFinalPreparation },
+  props: {
+    tabs: {
+      type: Array,
+      default () { return [] }
+    }
+  },
   methods: {
     changeTab (tabIndex) {
       this.tabs.map((tab) => {
