@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    Hallo
+    <next-button @nextTab="$emit('nextTab')" />
   </div>
 </template>
 
 <script>
+import NextButton from '../NextButton'
 export default {
-  name: 'TabIndex'
+  name: 'TabIndex',
+  components: { NextButton }
 }
 </script>
 
