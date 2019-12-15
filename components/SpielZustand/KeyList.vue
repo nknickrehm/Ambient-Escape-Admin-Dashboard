@@ -1,10 +1,13 @@
 <template>
   <div class="key-list">
-    <i v-for="(key,index) in keys" :key="`${key}-${index}`" :class="{'key--disabled': !key}" class="fas fa-key fa-3x" aria-hidden="true" />
+    <i v-for="(key,index) in keys" :key="`${key}-${index}`" :class="{'key--disabled': !key}" class="fas fa-key fa-2x" aria-hidden="true" />
   </div>
 </template>
 <script>
 export default {
+  // TODO for each Group calc key = %
+  // Group D: 4 keys, 25% each key
+  // Group A: 1 key, 100% each key
   name: 'KeyList',
   props: {
     keys: {
@@ -26,7 +29,7 @@ export default {
   .key-list{
     display: flex;
     justify-content: space-around;
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
   }
 
   .key-list i {
