@@ -63,7 +63,7 @@ export default {
   },
   computed: {
     valid () {
-      return this.$store.getters['players/getValid']
+      return this.$store.getters['room/getValid'] && this.$store.getters['players/getValid']
     },
     gameState () {
       return this.$store.getters['gamestate/getState']

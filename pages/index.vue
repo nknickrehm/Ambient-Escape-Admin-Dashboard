@@ -47,7 +47,7 @@ export default {
           label: 'Vorbereitung des Raumes',
           icon: 'hospital-alt',
           component: 'tab-room-preparation',
-          progress: 'players/getValid'
+          progress: 'room/getValid'
         },
         {
           isActive: false,
