@@ -28,9 +28,10 @@ import TabPlayerPreparation from '../components/SpielAdmin/TabPlayerPreparation'
 import TabRoomPreparation from '../components/SpielAdmin/TabRoomPreparation'
 import TabFinalPreparation from '../components/SpielAdmin/TabFinalPreparation'
 import TabGameState from '../components/SpielZustand/SpielZustand'
+import TabRoomOverview from '../components/SpielZustand/RoomOverview'
 
 export default {
-  components: { TabBar, TabIndex, TabRoomPreparation, TabPlayerPreparation, TabFinalPreparation, TabGameState },
+  components: { TabBar, TabIndex, TabRoomPreparation, TabPlayerPreparation, TabFinalPreparation, TabGameState, TabRoomOverview },
   data () {
     return {
       gameState: 0,
@@ -44,14 +45,14 @@ export default {
         },
         {
           isActive: false,
-          label: 'Vorbereitung des Raumes',
+          label: 'Raumvorbereitung',
           icon: 'hospital-alt',
           component: 'tab-room-preparation',
           progress: 'room/getValid'
         },
         {
           isActive: false,
-          label: 'Vorbereitung der Spieler',
+          label: 'Spielervorbereitung',
           icon: 'users',
           component: 'tab-player-preparation',
           progress: 'players/getValid'
@@ -67,6 +68,12 @@ export default {
           label: 'Spiel überwachen',
           icon: 'tv',
           component: 'tab-game-state'
+        },
+        {
+          isActive: false,
+          label: 'Raum überwachen',
+          icon: 'hospital-alt',
+          component: 'tab-room-overview'
         }
       ]
     }
@@ -100,7 +107,7 @@ export default {
       this.activateAllTabs()
       switch (this.gameState) {
         case GameState.running: this.disableTabs(0, 2); break
-        case GameState.setup: this.disableTabs(4, 4); break
+        case GameState.setup: this.disableTabs(4, 5); break
         default: break
       }
     },
