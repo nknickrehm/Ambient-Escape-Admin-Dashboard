@@ -1,5 +1,9 @@
 <template>
   <div class="container" @click.alt="debug = !debug">
+    <div v-for="(error, index) in errors" :key="index" class="notification is-danger">
+      <button class="delete"></button>
+      {{ error.msg }}
+    </div>
     <tab-bar :tabs="tabs" @change="changeTab" />
     <!-- eslint-disable-next-line vue/require-component-is -->
     <component
@@ -22,6 +26,7 @@
 
 <script>
 import GameState from '../helpers/gamestate'
+import Backend from '../helpers/backend'
 import TabBar from '../components/TabBar'
 import TabIndex from '../components/SpielAdmin/TabIndex'
 import TabPlayerPreparation from '../components/SpielAdmin/TabPlayerPreparation'
@@ -36,6 +41,7 @@ export default {
     return {
       gameState: 0,
       debug: false,
+      errors: [],
       tabs: [
         {
           isActive: true,
@@ -91,9 +97,16 @@ export default {
       this.gameState = newState
       this.updateTabStates()
     },
-    startGame () {
-      this.changeGameState(GameState.running)
-      this.changeTab(4)
+    async startGame () {
+      const players = this.$store.getters['players/getPlayers']
+
+      const { isSuccess, msg } = await Backend.addPlayers(players)
+      if (!isSuccess) {
+        this.errors.push({ msg })
+      } else {
+        this.changeGameState(GameState.running)
+        this.changeTab(4)
+      }
     },
     stopGame () {
       this.changeGameState(GameState.setup)
@@ -189,10 +202,10 @@ export default {
 
       for (let i = 0; i < 4; i++) {
         const name = this.shuffle(names)[0]
-        const email = `${name.split(' ')[0]}.${name.split(' ')[1]}@example.com`
+        const mail = `${name.split(' ')[0]}.${name.split(' ')[1]}@example.com`
         players.push({
           name,
-          email,
+          mail,
           device: i - 1,
           accepted: true
         })

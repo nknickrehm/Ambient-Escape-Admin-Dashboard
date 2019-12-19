@@ -16,7 +16,7 @@
           </div>
           <div class="field">
             <div class="control">
-              <input v-model="player.email" class="input" type="email" placeholder="E-Mail" @blur="savePlayers">
+              <input v-model="player.mail" class="input" type="email" placeholder="E-Mail" @blur="savePlayers">
             </div>
           </div>
         </div>

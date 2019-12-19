@@ -2,7 +2,7 @@ export const state = () => ({
   valid: false,
   players: Array(4).fill({
     name: '',
-    email: '',
+    mail: '',
     device: -1,
     accepted: false
   })
@@ -14,7 +14,7 @@ export const mutations = {
 
     let valid = true
     players.forEach((player) => {
-      if (player.name.length < 1 || player.email.length < 1 || !player.accepted) { valid = false }
+      if (player.name.length < 1 || player.mail.length < 1 || !player.accepted) { valid = false }
     })
 
     const sumDevices = players.reduce((acc, player) => acc + player.device, 0)
