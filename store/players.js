@@ -17,8 +17,10 @@ export const mutations = {
       if (player.name.length < 1 || player.mail.length < 1 || !player.accepted) { valid = false }
     })
 
-    const sumDevices = players.reduce((acc, player) => acc + player.device, 0)
-    if (sumDevices !== 2) { valid = false } // if all devices are distributed, the players device attributes sum up to 2
+    const playersWithoutDevice = players.filter(player => player.device === -1)
+    if (playersWithoutDevice.length !== players.length - 3) {
+      valid = false
+    }
 
     state.valid = valid
   },

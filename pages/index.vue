@@ -42,6 +42,7 @@ export default {
       gameState: 0,
       debug: false,
       errors: [],
+      gameid: null,
       tabs: [
         {
           isActive: true,
@@ -87,9 +88,17 @@ export default {
   computed: {
     GameState () { return GameState }
   },
-  created () {
-    this.gameState = this.$store.state.gamestate.currentState
-    this.updateTabStates()
+  async created () {
+    const { running, game } = await Backend.getGame()
+    this.gameid = game.gameid
+    if (running) {
+      this.changeGameState(GameState.running)
+      this.changeTab(4)
+    } else {
+      this.changeGameState(GameState.setup)
+    }
+    const players = await Backend.getPlayers(this.gameid)
+    this.$store.commit('players/update', players)
   },
   methods: {
     changeGameState (newState) {
@@ -104,6 +113,7 @@ export default {
       if (!isSuccess) {
         this.errors.push({ msg })
       } else {
+        await Backend.startGame(this.gameid)
         this.changeGameState(GameState.running)
         this.changeTab(4)
       }

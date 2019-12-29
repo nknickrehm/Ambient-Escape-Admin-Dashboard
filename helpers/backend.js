@@ -1,5 +1,9 @@
 const Axios = require('axios')
 const BACKENDBASEURL = 'http://localhost:8080'
+const GAMESTATES = {
+  NOT_STARTED: 'NOT STARTED',
+  STARTED: 'STARTED'
+}
 
 const axios = Axios.create({
   baseURL: BACKENDBASEURL,
@@ -27,6 +31,65 @@ export default {
     } catch (e) {
       console.error(e)
       return { isSuccess: false, msg: e }
+    }
+  },
+
+  async getPlayers (gameid) {
+    try {
+      const res = await axios.get('/players')
+      const { data: _players } = res
+      // eslint-disable-next-line
+      const players = _players.filter(player => player.gameid == gameid)
+      return players
+    } catch (e) {
+      console.error(e)
+      return []
+    }
+  },
+
+  async getGame () {
+    const _games = await this.getGames()
+    if (_games.isSuccess) {
+      const { games } = _games
+      const activeGame = games.find(game => game.status === GAMESTATES.STARTED)
+      if (activeGame) {
+        return { running: true, game: activeGame }
+      } else {
+        const preparedGame = games.find(game => game.status === GAMESTATES.NOT_STARTED)
+        if (preparedGame) {
+          return { running: false, game: preparedGame }
+        } else {
+          await this.createGame()
+          return this.getGame()
+        }
+      }
+    }
+  },
+
+  async getGames () {
+    try {
+      const res = await axios.get('/games')
+      const { data: games } = res
+      return { isSuccess: true, games }
+    } catch (e) {
+      console.error(e)
+      return { isSuccess: false, msg: e }
+    }
+  },
+
+  async createGame () {
+    try {
+      await axios.post('/games', {})
+    } catch (e) {
+      console.error(e)
+    }
+  },
+
+  async startGame (gameid) {
+    try {
+      await axios.patch(`/games/${gameid}/Status`, { status: GAMESTATES.STARTED })
+    } catch (e) {
+      console.error(e)
     }
   }
 }
