@@ -63,6 +63,9 @@ export default {
           return this.getGame()
         }
       }
+    } else {
+      await this.createGame()
+      return this.getGame()
     }
   },
 
