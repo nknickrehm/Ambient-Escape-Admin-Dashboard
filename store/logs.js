@@ -1,7 +1,8 @@
+// TODO: Threshoulds from group e and f are missing
 export const state = () => ({
   groupLogs: {
     a: {
-      progress: 70,
+      progress: 0,
       log: [
         // {
         //   text:
@@ -27,7 +28,7 @@ export const state = () => ({
       threshholdArray: [33, 66, 100]
     },
     d: {
-      progress: 10,
+      progress: 0,
       log: [
         // {
         //   text:
@@ -38,7 +39,7 @@ export const state = () => ({
       threshholdArray: [33, 66, 100]
     },
     e: {
-      progress: 30,
+      progress: 0,
       log: [
         // {
         //   text:
@@ -64,7 +65,7 @@ export const state = () => ({
       threshholdArray: [50, 60, 70, 100]
     },
     f: {
-      progress: 50,
+      progress: 0,
       log: [
         // {
         //   text:
