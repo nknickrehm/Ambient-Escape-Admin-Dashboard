@@ -3,104 +3,104 @@ export const state = () => ({
     a: {
       progress: 70,
       log: [
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        }
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // }
       ],
-      keysFound: [true]
+      threshholdArray: [33, 66, 100]
     },
     d: {
       progress: 10,
       log: [
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        }
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // }
       ],
-      keysFound: [true, false, false]
+      threshholdArray: [33, 66, 100]
     },
     e: {
       progress: 30,
       log: [
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        }
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // }
       ],
-      keysFound: [true, false, false, true]
+      threshholdArray: [50, 60, 70, 100]
     },
     f: {
       progress: 50,
       log: [
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-          timestamp: new Date()
-        }
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // },
+        // {
+        //   text:
+        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
+        //   timestamp: new Date()
+        // }
       ],
-      keysFound: [false, false, false, false, false]
+      threshholdArray: [10, 100]
     }
   }
 })
 
 export const mutations = {
   /**
-   * Init the groupLogs object. Requires hardcoded keysFound arrays
+   * Init the groupLogs object. Requires hardcoded threshholdArray arrays
    */
   init (state) {
     Object.keys(state.groupLogs).forEach((log) => {
       log.progress = 0
       log.log = []
-      log.keysFound.forEach(key => (key = !key))
+      log.threshholdArray.forEach(key => (key = !key))
     })
   },
   addToLog (state, { groupID, logEntry }) {
@@ -109,11 +109,11 @@ export const mutations = {
     state.groupLogs[groupID.toLowerCase()].log.push(null)
     state.groupLogs[groupID.toLowerCase()].log.pop()
   },
-  changeKeysFound (state, { groupID, index, value = true }) {
-    state.groupLogs[groupID.toLowerCase()].keysFound[index] = value
+  changethreshholdArray (state, { groupID, index, value = true }) {
+    state.groupLogs[groupID.toLowerCase()].threshholdArray[index] = value
     // compensate vue2 bug
-    state.groupLogs[groupID.toLowerCase()].keysFound.push(null)
-    state.groupLogs[groupID.toLowerCase()].keysFound.pop()
+    state.groupLogs[groupID.toLowerCase()].threshholdArray.push(null)
+    state.groupLogs[groupID.toLowerCase()].threshholdArray.pop()
   },
   changeProgress (state, { groupID, value }) {
     state.groupLogs[groupID.toLowerCase()].progress = value
