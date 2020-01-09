@@ -28,6 +28,12 @@
     </section>
 
     <section class="section">
+      <h2 class="is-size-3">Storyline</h2>
+      <br>
+      Dieses Spiel folgt Storyline {{ namedStoryline }}
+    </section>
+
+    <section class="section">
       <h2 class="is-size-3">Spiel starten</h2>
       <br>
       <p v-if="!valid">
@@ -52,6 +58,14 @@
 <script>
 export default {
   name: 'TabFinalPreparation',
+  props: {
+    storyline: {
+      type: Object,
+      default () {
+        return { storyline: -1 }
+      }
+    }
+  },
   data () {
     return {
       players: []
@@ -67,6 +81,9 @@ export default {
     },
     gameState () {
       return this.$store.getters['gamestate/getState']
+    },
+    namedStoryline () {
+      return this.storyline.storyline < 1 ? 'A' : 'B'
     }
   },
   methods: {

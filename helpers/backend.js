@@ -64,8 +64,12 @@ export default {
         }
       }
     } else {
-      await this.createGame()
-      return this.getGame()
+      const { gameid } = await this.createGame()
+      if (gameid) {
+        return this.getGame()
+      } else {
+        throw new Error('There seems to be something wrong with the Backend!')
+      }
     }
   },
 
@@ -82,7 +86,9 @@ export default {
 
   async createGame () {
     try {
-      await axios.post('/games', {})
+      const res = await axios.post('/games', {})
+      const { data } = res
+      return { gameid: data.id }
     } catch (e) {
       console.error(e)
     }
@@ -93,6 +99,43 @@ export default {
       await axios.patch(`/games/${gameid}/Status`, { status: GAMESTATES.STARTED })
     } catch (e) {
       console.error(e)
+    }
+  },
+
+  async createStoryline (gameid) {
+    const storyline = Math.floor(Math.random() * 2)
+    try {
+      await axios.post('/storylines', { gameid, storyline })
+    } catch (e) {
+      console.error(e)
+    }
+  },
+
+  async getStoryline (gameid) {
+    const _storylines = await this.getStorylines()
+    if (_storylines.isSuccess) {
+      const { storylines } = _storylines
+      const currentStoryline = storylines.find(storyline => parseInt(storyline.gameid) === gameid)
+      if (currentStoryline) {
+        return currentStoryline
+      } else {
+        await this.createStoryline(gameid)
+        return this.getStoryline(gameid)
+      }
+    } else {
+      await this.createStoryline(gameid)
+      return this.getStoryline(gameid)
+    }
+  },
+
+  async getStorylines () {
+    try {
+      const res = await axios.get('/storylines')
+      const { data: storylines } = res
+      return { isSuccess: true, storylines }
+    } catch (e) {
+      console.error(e)
+      return { isSuccess: false, msg: e }
     }
   }
 }

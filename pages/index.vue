@@ -11,6 +11,7 @@
       v-for="(tab, index) in tabs"
       :key="index"
       v-if="tab.isActive"
+      :storyline="storyline"
       @nextTab="changeTab(index + 1)"
       @stopGame="stopGame"
       @startGame="startGame"/>
@@ -43,6 +44,7 @@ export default {
       debug: false,
       errors: [],
       gameid: null,
+      storyline: null,
       tabs: [
         {
           isActive: true,
@@ -91,6 +93,7 @@ export default {
   async created () {
     const { running, game } = await Backend.getGame()
     this.gameid = game.gameid
+    this.storyline = await Backend.getStoryline(this.gameid)
     if (running) {
       this.changeGameState(GameState.running)
       this.changeTab(4)
