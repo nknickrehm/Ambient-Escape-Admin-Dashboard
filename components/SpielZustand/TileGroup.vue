@@ -6,7 +6,7 @@
           <h1 class="tile__header">
             Gruppe A
           </h1>
-          <key-list :keys="groupData.a.keysFound" />
+          <key-list :keys="groupData.a.threshholdArray" :progress="groupData.a.progress" />
           <progressbar :progress="groupData.a.progress" />
           <log :logs="groupData.a.log" />
         </article>
@@ -14,7 +14,7 @@
           <h1 class="tile__header">
             Gruppe D
           </h1>
-          <key-list :keys="groupData.d.keysFound" />
+          <key-list :keys="groupData.d.threshholdArray" :progress="groupData.d.progress" />
           <progressbar :progress="groupData.d.progress" />
           <log :logs="groupData.d.log" />
         </article>
@@ -26,7 +26,7 @@
           <h1 class="tile__header">
             Gruppe E
           </h1>
-          <key-list :keys="groupData.e.keysFound" />
+          <key-list :keys="groupData.e.threshholdArray" :progress="groupData.e.progress" />
           <progressbar :progress="groupData.e.progress" />
           <log :logs="groupData.e.log" />
         </article>
@@ -34,7 +34,7 @@
           <h1 class="tile__header">
             Gruppe F
           </h1>
-          <key-list :keys="groupData.f.keysFound" />
+          <key-list :keys="groupData.f.threshholdArray" :progress="groupData.f.progress" />
           <progressbar :progress="groupData.f.progress" />
           <log :logs="groupData.f.log" />
         </article>
@@ -74,7 +74,7 @@ export default {
         logEntry: { text, timestamp: new Date(timestamp) }
       })
     })
-    this.socket.on('updateRiddleProgress', (data) => {
+    this.socket.on('riddles/updateProgress', (data) => {
       this.$store.commit('logs/updateProgress', data)
     })
   }

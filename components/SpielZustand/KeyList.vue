@@ -1,6 +1,6 @@
 <template>
   <div class="key-list">
-    <i v-for="(key,index) in keys" :key="`${key}-${index}`" :class="{'key--disabled': !key}" class="fas fa-key fa-2x" aria-hidden="true" />
+    <i v-for="(key,index) in keys" :key="`${key}-${index}`" :class="{'key--disabled': progress < key}" class="fas fa-key fa-2x" aria-hidden="true" />
   </div>
 </template>
 <script>
@@ -21,6 +21,11 @@ export default {
         }
         return isValid
       }
+    },
+    progress: {
+      required: true,
+      default: () => 0,
+      type: Number
     }
   }
 }
