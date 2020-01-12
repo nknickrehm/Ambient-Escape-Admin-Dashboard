@@ -20,26 +20,104 @@
           fill="#000000"
         />
 
-        <g :visibility="element1">
+        <rect
+          element="medikamentenspender"
+          height="30"
+          width="50"
+          y="100"
+          x="850"
+          stroke-width="0"
+          fill="#000000"
+        />
+
+        <g :visibility="medikamentenspender">
           <line
-            x1="770"
-            y1="350"
+            x1="875"
+            y1="115"
             x2="950"
-            y2="350"
+            y2="115"
             style="stroke:rgb(255,0,0);stroke-width:2"
           />
 
-          <text x="960" y="350" fill="black">Gruppe 1: Schlüssel 1</text>
+          <text x="960" y="120" fill="black">Gruppe A: Medikamentenmischer</text>
         </g>
 
         <ellipse
-          :opacity="element1O"
-          @mouseenter="element1O = .7; element1='show'"
-          @mouseleave="element1O = 1; element1='hidden'"
+          :opacity="medikamentenspenderO"
+          @mouseenter="medikamentenspenderO = .7; medikamentenspender='show'"
+          @mouseleave="medikamentenspenderO = 1; medikamentenspender='hidden'"
+          ry="10"
+          rx="10"
+          cy="115"
+          cx="875"
+          stroke-width="0"
+          fill="red"
+        />
+
+        <ellipse
           ry="20"
           rx="20"
-          cy="350"
-          cx="770"
+          cy="275"
+          cx="875"
+          stroke-width="0"
+          fill="#000000"
+        />
+
+        <g :visibility="medikamente">
+          <line
+            x1="875"
+            y1="275"
+            x2="950"
+            y2="275"
+            style="stroke:rgb(255,0,0);stroke-width:2"
+          />
+
+          <text x="960" y="280" fill="black">Papierkorb:</text>
+          <text x="975" y="295" fill="black">Gruppe A: Medikamente</text>
+        </g>
+
+        <ellipse
+          :opacity="medikamenteO"
+          @mouseenter="medikamenteO = .7; medikamente='show'"
+          @mouseleave="medikamenteO = 1; medikamente='hidden'"
+          ry="10"
+          rx="10"
+          cy="275"
+          cx="875"
+          stroke-width="0"
+          fill="red"
+        />
+
+        <rect
+          height="35"
+          width="35"
+          y="430"
+          x="855"
+          stroke-width="0"
+          fill="#000000"
+        />
+
+        <g :visibility="nachtschrank">
+          <line
+            y1="447"
+            x1="872"
+            x2="950"
+            y2="447"
+            style="stroke:rgb(255,0,0);stroke-width:2"
+          />
+
+          <text x="960" y="450" fill="black">Nachtschrank:</text>
+          <text x="975" y="465" fill="black">Gruppe D: RFID-Reader, Schloss</text>
+        </g>
+
+        <ellipse
+          :opacity="nachtschrankO"
+          @mouseenter="nachtschrankO = .7; nachtschrank='show'"
+          @mouseleave="nachtschrankO = 1; nachtschrank='hidden'"
+          ry="10"
+          rx="10"
+          cy="447"
+          cx="872"
           stroke-width="0"
           fill="red"
         />
@@ -55,8 +133,12 @@ export default {
   },
   data () {
     return {
-      element1O: 1,
-      element1: 'hidden'
+      medikamentenspenderO: 1,
+      medikamentenspender: 'hidden',
+      medikamenteO: 1,
+      medikamente: 'hidden',
+      nachtschrank: '1',
+      nachtschrankO: 'hidden'
     }
   },
   methods: {
