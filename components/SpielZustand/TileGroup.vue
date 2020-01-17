@@ -67,7 +67,7 @@ export default {
   },
   mounted () {
     // TODO change url to the url of the main backend
-    this.socket = IO('http://192.168.178.30:8080/')
+    this.socket = IO('http://127.0.0.1:8080/')
     this.socket.on('newLogEntry', ({ groupID, data: text, timestamp }) => {
       this.$store.commit('logs/addToLog', {
         groupID: groupID.toLowerCase(),
