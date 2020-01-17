@@ -9,7 +9,6 @@
     </div>
     <tile-group />
   </div>
-  <!-- TODO: KEEP ALIVE -->
 </template>
 
 <script>

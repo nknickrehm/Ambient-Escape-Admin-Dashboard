@@ -3,92 +3,23 @@ export const state = () => ({
   groupLogs: {
     a: {
       progress: 0,
-      log: [
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // }
-      ],
+      log: [],
       threshholdArray: [33, 66, 100]
     },
     d: {
       progress: 0,
-      log: [
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // }
-      ],
+      log: [],
       threshholdArray: [33, 66, 100]
     },
     e: {
       progress: 0,
-      log: [
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // }
-      ],
-      threshholdArray: [50, 60, 70, 100]
+      log: [],
+      threshholdArray: [100]
     },
     f: {
       progress: 0,
-      log: [
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // },
-        // {
-        //   text:
-        //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna justo, accumsan mollis imperdiet id',
-        //   timestamp: new Date()
-        // }
-      ],
-      threshholdArray: [10, 100]
+      log: [],
+      threshholdArray: [100]
     }
   }
 })

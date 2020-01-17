@@ -78,11 +78,6 @@ export default {
       this.$store.commit('logs/updateProgress', data)
     })
   }
-  //  TODO
-  // methods:{
-  //   autoScrollToBottom(){
-  //   }
-  // }
 }
 </script>
 <style scoped>
