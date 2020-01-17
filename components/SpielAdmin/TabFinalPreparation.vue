@@ -36,7 +36,7 @@
     <section class="section">
       <h2 class="is-size-3">Spiel starten</h2>
       <br>
-      <p v-if="!valid">
+      <p v-if="!valid && !isGameStarted">
         <span class="tag is-danger is-light">Bitte vervollständige die Angaben und Todos in allen Teilschritten!</span>
         <br><br>
       </p>
@@ -84,6 +84,9 @@ export default {
     },
     namedStoryline () {
       return this.storyline.storyline < 1 ? 'A' : 'B'
+    },
+    isGameStarted () {
+      return (this.$store.state.gamestate.currentState === 1)
     }
   },
   methods: {
