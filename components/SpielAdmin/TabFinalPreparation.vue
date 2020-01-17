@@ -18,13 +18,19 @@
             <tr v-for="(player, index) in players" :key="index">
               <td>{{ index + 1 }}</td>
               <td>{{ player.name.length > 0 ? player.name : 'N/A' }}</td>
-              <td>{{ player.mail.length > 0 ? player.email : 'N/A' }}</td>
+              <td>{{ player.mail.length > 0 ? player.mail : 'N/A' }}</td>
               <td>{{ getDeviceForPlayer(index) }}</td>
               <td>{{ player.accepted ? 'Ja' : 'Nein' }}</td>
             </tr>
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section class="section">
+      <h2 class="is-size-3">Storyline</h2>
+      <br>
+      Dieses Spiel folgt Storyline {{ namedStoryline }}
     </section>
 
     <section class="section">
@@ -52,6 +58,14 @@
 <script>
 export default {
   name: 'TabFinalPreparation',
+  props: {
+    storyline: {
+      type: Object,
+      default () {
+        return { storyline: -1 }
+      }
+    }
+  },
   data () {
     return {
       players: []
@@ -67,6 +81,9 @@ export default {
     },
     gameState () {
       return this.$store.getters['gamestate/getState']
+    },
+    namedStoryline () {
+      return this.storyline.storyline < 1 ? 'A' : 'B'
     }
   },
   methods: {
