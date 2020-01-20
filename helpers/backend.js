@@ -53,11 +53,11 @@ export default {
       const { games } = _games
       const activeGame = games.find(game => game.status === GAMESTATES.STARTED)
       if (activeGame) {
-        return { running: true, game: activeGame }
+        return { running: true, gameid: activeGame.gameid }
       } else {
         const preparedGame = games.find(game => game.status === GAMESTATES.NOT_STARTED)
         if (preparedGame) {
-          return { running: false, game: preparedGame }
+          return { running: false, gameid: preparedGame.gameid }
         } else {
           await this.createGame()
           return this.getGame()
@@ -66,7 +66,7 @@ export default {
     } else {
       const { gameid } = await this.createGame()
       if (gameid) {
-        return this.getGame()
+        return { running: false, gameid }
       } else {
         throw new Error('There seems to be something wrong with the Backend!')
       }

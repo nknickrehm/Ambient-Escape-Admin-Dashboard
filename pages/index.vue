@@ -91,8 +91,8 @@ export default {
     GameState () { return GameState }
   },
   async created () {
-    const { running, game } = await Backend.getGame()
-    this.gameid = game.gameid
+    const { running, gameid } = await Backend.getGame()
+    this.gameid = gameid
     this.storyline = await Backend.getStoryline(this.gameid)
     if (running) {
       this.changeGameState(GameState.running)

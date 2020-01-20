@@ -30,7 +30,7 @@
     <section class="section">
       <h2 class="is-size-3">Storyline</h2>
       <br>
-      Dieses Spiel folgt Storyline {{ namedStoryline }}
+      {{ namedStoryline }}
     </section>
 
     <section class="section">
@@ -83,11 +83,11 @@ export default {
       return this.$store.getters['gamestate/getState']
     },
     namedStoryline () {
-      switch (this.storyline) {
-        case 0: return 'Hinweis: Nicht einnehmen, Aussage trauen: Nein'
-        case 1: return 'Hinweis: Nicht einnehmen, Aussage trauen: Ja'
-        case 2: return 'Hinweis:  Einnehmen, Aussage trauen: Ja'
-        case 3: return 'Hinweis:  Einnehmen, Aussage trauen: Nein'
+      switch (this.storyline.storyline) {
+        case 0: return 'In der Story wird der Hinweis gegeben, das Medikament nicht einzunehmen. Die Spieler sollen dieser Aussage nicht trauen und somit das Medikament einnehmen.'
+        case 1: return 'In der Story wird der Hinweis gegeben, das Medikament nicht einzunehmen. Die Spieler sollen dieser Aussage trauen und somit das Medikament nicht einnehmen.'
+        case 2: return 'In der Story wird der Hinweis gegeben, das Medikament einzunehmen. Die Spieler sollen dieser Aussage trauen und somit das Medikament einnehmen.'
+        case 3: return 'In der Story wird der Hinweis gegeben, das Medikament einzunehmen. Die Spieler sollen dieser Aussage nicht trauen und somit das Medikament nicht einnehmen.'
         default: return 'ERROR 404: Storyline not found.'
       }
     },
