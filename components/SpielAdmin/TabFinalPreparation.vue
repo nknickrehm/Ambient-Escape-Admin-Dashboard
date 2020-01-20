@@ -83,7 +83,13 @@ export default {
       return this.$store.getters['gamestate/getState']
     },
     namedStoryline () {
-      return this.storyline.storyline < 1 ? 'A' : 'B'
+      switch (this.storyline) {
+        case 0: return 'Hinweis: Nicht einnehmen, Aussage trauen: Nein'
+        case 1: return 'Hinweis: Nicht einnehmen, Aussage trauen: Ja'
+        case 2: return 'Hinweis:  Einnehmen, Aussage trauen: Ja'
+        case 3: return 'Hinweis:  Einnehmen, Aussage trauen: Nein'
+        default: return 'ERROR 404: Storyline not found.'
+      }
     },
     isGameStarted () {
       return (this.$store.state.gamestate.currentState === 1)

@@ -1,5 +1,5 @@
 const Axios = require('axios')
-const BACKENDBASEURL = 'http://localhost:8080'
+const BACKENDBASEURL = 'http://192.168.0.20:8080'
 const GAMESTATES = {
   NOT_STARTED: 'NOT STARTED',
   STARTED: 'STARTED'
@@ -103,7 +103,7 @@ export default {
   },
 
   async createStoryline (gameid) {
-    const storyline = Math.floor(Math.random() * 2)
+    const storyline = Math.floor(Math.random() * 4)
     try {
       await axios.post('/storylines', { gameid, storyline })
     } catch (e) {
