@@ -23,3 +23,8 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 The app has only one route `/` and behaves like a single page application. The two different views are stored in the `components` folder which contains sub folders for both meta groups involved.
 
 The GameState can be updated through the custom event `changeGameState`. Please use the enum stored in `/helpers/gamestate.js` for the GameState values. 
+
+## Developer / debugging options
+While running the application you can toggle developer options by holding the Alt key and clicking the main component of the app.
+
+This allows you to skip filling out all forms and generate dummy Player information.

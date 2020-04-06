@@ -1,6 +1,6 @@
+const path = require('path')
 const express = require('express')
 const consola = require('consola')
-const path = require('path');
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
