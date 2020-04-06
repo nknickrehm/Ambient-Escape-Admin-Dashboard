@@ -12,24 +12,24 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.2",
-    "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/bulma": "^1.2.1",
-    "axios": "^0.19.0",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@nuxtjs/axios": "^5.9.7",
+    "@nuxtjs/bulma": "^1.2.7",
+    "axios": "^0.19.2",
     "cross-env": "^5.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.12.2",
     "socket.io-client": "^2.3.0",
-    "vue-pdf": "^4.0.7"
+    "vue-pdf": "^4.0.8"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-nuxt": "^0.5.2",
+    "nodemon": "^1.18.9"
   }
 }

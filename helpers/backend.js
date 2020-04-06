@@ -1,5 +1,5 @@
 const Axios = require('axios')
-const BACKENDBASEURL = 'http://192.168.0.20:8080'
+const BACKENDBASEURL = 'http://127.0.0.1:8080'
 const GAMESTATES = {
   NOT_STARTED: 'NOT STARTED',
   STARTED: 'STARTED'
