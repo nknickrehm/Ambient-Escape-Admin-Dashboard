@@ -20,7 +20,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
-    "nuxt": "^2.12.2",
+    "nuxt": "^2.15.8",
     "socket.io-client": "^2.3.0",
     "vue-pdf": "^4.0.8"
   },
